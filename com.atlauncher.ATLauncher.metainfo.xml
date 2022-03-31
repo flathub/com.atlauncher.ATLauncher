@@ -70,6 +70,50 @@
     </screenshots>
     
   <releases>
+    <release date="2022-03-29" version="3.4.13.0">
+       <description>
+<p>New Features</p>
+<ul>
+    <li>Add ability to change sort order for ATLauncher and CurseForge packs</li>
+    <li>Add in Name and Featured sort fields for CurseForge [#554]</li>
+    <li>Add ability to add a CurseForge/Modrinth pack from the packs browser by id/slug/url [#554]</li>
+    <li>Condense the search fields around the application to be inline and simpler</li>
+    <li>More advanced server script for Linux/OSX to mimick more closely the Windows one</li>
+    <li>Add menu item to open launcher folder to system tray</li>
+</ul>
+<p>Fixes</p>
+<ul>
+    <li>Remove Vercel links from being valid from Modrinth imports</li>
+    <li>Modrinth packs using dependencies not installing</li>
+    <li>Fix some random errors seen popping up</li>
+    <li>Issue with Technic packs being removed trying to still check for updates</li>
+    <li>Detect Adoptium Java builds with JavaChecker</li>
+    <li>New versions of Quilt using hashed library instead of intermediary and not working</li>
+    <li>Don't download/use Minecraft runtimes for Arm based machines (except M1)</li>
+    <li>aarch64 not being included as a valid ARM arch</li>
+    <li>Update OSX app icon [#502]</li>
+    <li>Log clearer tool NPE when folder doesn't exist</li>
+    <li>Issue with OSX not using runtime when running initServerSettings</li>
+    <li>Issue with trying to delete directories that dont exist on server install</li>
+    <li>Graphical glitch when changing instance image [#560]</li>
+    <li>System tray menu not being themed</li>
+    <li>Issue with exporting to Modrinth not url escaping downloads</li>
+    <li>Don't require relogin for offline play</li>
+    <li>Change hashing class to use Guava under the hood as it's much better memory wise [#558]</li>
+    <li>The Instance classes getPack call not excluding vanilla packs</li>
+</ul>
+<p>Misc</p>
+<ul>
+    <li>Update Discord icon</li>
+    <li>Update all dependency versions</li>
+    <li>Remove references to old CurseForge api</li>
+    <li>Remove old sort order setting for ATLauncher packs</li>
+    <li>Remove server script for OSX as can share the Linux one</li>
+    <li>Remove servers checking tool</li>
+</ul>
+       </description>
+       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.0</url>
+    </release>
     <release date="2022-01-03" version="3.4.10.15">
     <description>
 	<p>New Features</p>
