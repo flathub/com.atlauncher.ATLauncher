@@ -1,6 +1,6 @@
 # ATLauncher
 
-Flatpak for ATLauncher
+Flatpak for [ATLauncher](https://github.com/ATLauncher/ATLauncher)
 
 ## Custom directory
 
