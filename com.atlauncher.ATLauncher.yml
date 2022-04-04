@@ -4,11 +4,17 @@ app-id: com.atlauncher.ATLauncher
 runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
+
 sdk-extensions:
     - org.freedesktop.Sdk.Extension.openjdk8
+    - org.freedesktop.Sdk.Compat.i386
+    - org.freedesktop.Sdk.Extension.toolchain-i386
+
 command: atlauncher.sh
+
 build-options:
     prepend-path: /app/jre/bin
+
 finish-args:
     - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
     - --socket=x11
@@ -16,11 +22,49 @@ finish-args:
     - --device=all
     - --socket=pulseaudio
     - --share=network
+
+add-extensions:
+  x-compat-i386-opts: &compat_i386_opts
+    prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+    ldflags: -L/app/lib32
+    append-path: /usr/lib/sdk/toolchain-i386/bin
+    env:
+      CC: i686-unknown-linux-gnu-gcc
+      CXX: i686-unknown-linux-gnu-g++
+    libdir: /app/lib32
+
 modules:
     - name: openjdk
       buildsystem: simple
       build-commands:
           - /usr/lib/sdk/openjdk8/install.sh
+
+    - name: gamemode
+      buildsystem: meson
+      config-opts: &gamemode_opts
+          - -Dwith-systemd=false
+          - -Dwith-daemon=false
+          - -Dwith-examples=false
+          - -Dwith-util=false
+          - -Dwith-sd-bus-provider=no-daemon
+      sources: &gamemode_sources
+          - type: archive
+            url: https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
+            sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
+
+    - name: gamemode-32bit
+      build-options:
+        arch:
+          x86_64: *compat_i386_opts
+      buildsystem: meson
+      config-opts: *gamemode_opts
+      sources: *gamemode_sources
+
+    - name: gamemoderun
+      buildsystem: simple
+      build-commands:
+        - install -Dm755 data/gamemoderun -t /app/bin
+      sources: *gamemode_sources
 
     - name: atlauncher
       buildsystem: simple
