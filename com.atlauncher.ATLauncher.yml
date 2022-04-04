@@ -16,6 +16,7 @@ finish-args:
     - --device=all
     - --socket=pulseaudio
     - --share=network
+    -  --filesystem=xdg-run/app/com.discordapp.Discord:create
 modules:
     - name: openjdk
       buildsystem: simple
