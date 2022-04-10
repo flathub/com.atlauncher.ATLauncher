@@ -1,2 +1,5 @@
-builddir/
+build/
 .flatpak-builder/
+
+# Ignore all jars
+*.jar
