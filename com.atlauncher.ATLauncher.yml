@@ -17,6 +17,16 @@ finish-args:
     - --socket=pulseaudio
     - --share=network
 modules:
+    # Needed by Minecraft 1.8.2 and up
+    - name: xrandr
+      sources:
+        - type: archive
+          url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
+          sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
+      cleanup:
+        - /share/man
+
+    # This is a java program, ofc we need this
     - name: openjdk
       buildsystem: simple
       build-commands:
