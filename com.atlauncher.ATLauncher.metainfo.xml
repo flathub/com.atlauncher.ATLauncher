@@ -70,6 +70,39 @@
     </screenshots>
     
   <releases>
+    <release date="2022-04-20" version="3.4.13.2">
+    	<description>
+<p>Fixes</p>
+<ul>
+	<li>    The changes made for dbus and flatpak file pickers causing issue installing Forge 1.16.5 [#564]</li>
+</ul>    	</description>
+    	<url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.2</url>
+    </release>
+    <release date="2022-04-20" version="3.4.13.1">
+    	<description>
+<p>    	New Features</p>
+<ul>
+    <li>Add in scanning of running processes in Windows for antivirus programs and log as warning</li>
+    <li>Add in support for new OSX Arm natives starting to be used in snapshot 22w16a and newer</li>
+    <li>Add in warning when browsing mods for Quilt based instances without QSL installed</li>
+</ul>
+<p>Fixes</p>
+<ul>
+    <li>Running the app via Flatpak not allowing selecting files outside the sandbox [#564]</li>
+    <li>Error opening website of some instances [#567]</li>
+    <li>Typo on Don't Check Mods On CurseForge hover text [#570]</li>
+    <li>Adding mods for Quilt based instances not working</li>
+    <li>Switch hashed library for intermediary when installing Quilt loader and enabled</li>
+    <li>Logic for when showing mod versions for other loaders when using Quilt</li>
+</ul>
+<p>Misc</p>
+<ul>
+    <li>Remove old references to V1 instance format</li>
+    <li>Add Pair class to simplify some Object casting</li>
+</ul>
+    	</description>
+    	<url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.1</url>
+    </release>
     <release date="2022-03-29" version="3.4.13.0">
        <description>
 <p>New Features</p>
