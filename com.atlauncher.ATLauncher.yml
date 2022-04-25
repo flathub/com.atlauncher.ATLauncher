@@ -4,11 +4,15 @@ app-id: com.atlauncher.ATLauncher
 runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
+
 sdk-extensions:
     - org.freedesktop.Sdk.Extension.openjdk8
+
 command: atlauncher.sh
+
 build-options:
     prepend-path: /app/jre/bin
+
 finish-args:
     - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
     - --socket=x11
@@ -16,12 +20,42 @@ finish-args:
     - --device=all
     - --socket=pulseaudio
     - --share=network
-    -  --filesystem=xdg-run/app/com.discordapp.Discord:create
+    - --filesystem=xdg-run/app/com.discordapp.Discord:create
+
 modules:
+    # Needed by Minecraft 1.8.2 and up
+    - name: xrandr
+      sources:
+        - type: archive
+          url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
+          sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
+      cleanup:
+        - /share/man
+
+    # This is a java program, ofc we need this
     - name: openjdk
       buildsystem: simple
       build-commands:
           - /usr/lib/sdk/openjdk8/install.sh
+
+    - name: gamemode
+      buildsystem: meson
+      config-opts: &gamemode_opts
+          - -Dwith-systemd=false
+          - -Dwith-daemon=false
+          - -Dwith-examples=false
+          - -Dwith-util=false
+          - -Dwith-sd-bus-provider=no-daemon
+      sources: &gamemode_sources
+          - type: archive
+            url: https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
+            sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
+
+    - name: gamemoderun
+      buildsystem: simple
+      build-commands:
+        - install -Dm755 data/gamemoderun -t /app/bin
+      sources: *gamemode_sources
 
     - name: atlauncher
       buildsystem: simple
@@ -30,9 +64,9 @@ modules:
       sources:
           - type: file
             dest-filename: ATLauncher.jar
-            url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.13.0/ATLauncher-3.4.13.0.jar
+            url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.13.2/ATLauncher-3.4.13.2.jar
             tag: v3.4.13.0
-            sha256: 3ca33bc79b489a5443e91681814ee233b2c75fb240fbcc56c21f8b197324a266
+            sha256: 6751dd4f5de884fcb7f22acbbc3be061dfdc85bf56129183667b425e9703c278
             x-checker-data:
              type: git
              url: https://github.com/ATLauncher/ATLauncher.git
