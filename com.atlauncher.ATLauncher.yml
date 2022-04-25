@@ -20,6 +20,7 @@ finish-args:
     - --device=all
     - --socket=pulseaudio
     - --share=network
+    - --filesystem=xdg-run/app/com.discordapp.Discord:create
 
 modules:
     # Needed by Minecraft 1.8.2 and up
