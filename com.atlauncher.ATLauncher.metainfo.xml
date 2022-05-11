@@ -70,6 +70,19 @@
     </screenshots>
     
   <releases>
+      <release date="2022-05-10" version="3.4.13.5">
+       <description>
+<p>Fixes</p>
+<ul>
+<li>Remove api key header from network debug logger</li>
+<li>Show Fabric mods when browsing Modrinth mods and using Quilt loader</li>
+<li>Servers not launching when there is a space in the directory path</li>
+<li>Move Featured Packs tab to a sub tab within the Packs tab</li>
+<li>Some issues with light themes not being readable</li>
+</ul>
+       </description>
+       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.0</url>
+    </release>
     <release date="2022-04-20" version="3.4.13.2">
     	<description>
 <p>Fixes</p>
@@ -145,7 +158,7 @@
     <li>Remove servers checking tool</li>
 </ul>
        </description>
-       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.0</url>
+       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.5</url>
     </release>
     <release date="2022-01-03" version="3.4.10.15">
     <description>
