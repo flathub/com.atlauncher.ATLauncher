@@ -70,6 +70,16 @@
     </screenshots>
     
   <releases>
+        <release date="2022-05-15" version="3.4.13.9">
+       <description>
+<p>Fixes</p>
+<ul>
+<li>Use size provided by Modrinth api's when downloading mods/modpacks</li>
+<li>The modpack search for Modrinth not working with all categories</li>
+</ul>
+       </description>
+       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.9</url>
+    </release>
       <release date="2022-05-10" version="3.4.13.5">
        <description>
 <p>Fixes</p>
@@ -81,7 +91,7 @@
 <li>Some issues with light themes not being readable</li>
 </ul>
        </description>
-       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.0</url>
+       <url>https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.13.5</url>
     </release>
     <release date="2022-04-20" version="3.4.13.2">
     	<description>
