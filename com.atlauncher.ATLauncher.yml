@@ -6,92 +6,93 @@ runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 
 sdk-extensions:
-    - org.freedesktop.Sdk.Extension.openjdk8
+  - org.freedesktop.Sdk.Extension.openjdk8
 
 command: atlauncher.sh
 
 build-options:
-    prepend-path: /app/jre/bin
+  prepend-path: /app/jre/bin
 
 finish-args:
-    - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
-    - --socket=x11
-    - --share=ipc
-    - --device=all
-    - --socket=pulseaudio
-    - --share=network
-    - --filesystem=xdg-run/app/com.discordapp.Discord:create
+  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
+  - --socket=x11
+  - --share=ipc
+  - --device=all
+  - --socket=pulseaudio
+  - --share=network
+  - --filesystem=xdg-run/app/com.discordapp.Discord:create
 
 modules:
     # Needed by Minecraft 1.8.2 and up
-    - name: xrandr
-      sources:
-        - type: archive
-          url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
-          sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
-      cleanup:
-        - /share/man
+  - name: xrandr
+    sources:
+      - type: archive
+        url: https://www.x.org/archive/individual/app/xrandr-1.5.1.tar.gz
+        sha256: 7b99edb7970a1365eaf5bcaf552144e4dfc3ccf510c4abc08569849929fb366e
+    cleanup:
+      - /share/man
 
     # This is a java program, ofc we need this
-    - name: openjdk
-      buildsystem: simple
-      build-commands:
-          - /usr/lib/sdk/openjdk8/install.sh
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk8/install.sh
 
-    - name: gamemode
-      buildsystem: meson
-      config-opts: &gamemode_opts
-          - -Dwith-systemd=false
-          - -Dwith-daemon=false
-          - -Dwith-examples=false
-          - -Dwith-util=false
-          - -Dwith-sd-bus-provider=no-daemon
-      sources: &gamemode_sources
-          - type: archive
-            url: https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
-            sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
+  - name: gamemode
+    buildsystem: meson
+    config-opts:
+      - -Dwith-systemd=false
+      - -Dwith-daemon=false
+      - -Dwith-examples=false
+      - -Dwith-util=false
+      - -Dwith-sd-bus-provider=no-daemon
+    sources: &gamemode_sources
+      - type: archive
+        url: https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
+        sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
 
-    - name: gamemoderun
-      buildsystem: simple
-      build-commands:
-        - install -Dm755 data/gamemoderun -t /app/bin
-      sources: *gamemode_sources
+  - name: gamemoderun
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 data/gamemoderun -t /app/bin
+    sources: *gamemode_sources
 
-    - name: atlauncher
-      buildsystem: simple
-      build-commands:
-          - install -D ATLauncher.jar /app/bin/ATLauncher.jar
-      sources:
-          - type: file
-            dest-filename: ATLauncher.jar
-            url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.13.9/ATLauncher-3.4.13.9.jar
-            tag: v3.4.13.5
-            sha256: 7b95935f222db40261f39d106426b53933f43f3f92a41e2118fbf7c9949364c9
-            x-checker-data:
-             type: json
-             url: https://api.github.com/repos/ATLauncher/ATLauncher/releases/latest
-             version-query: ".name | sub(\"^v\"; \"\")"
-             url-query: ".assets[] | select(.name==\"ATLauncher-\" + $version + \".jar\") | .browser_download_url"
-        
+  - name: atlauncher
+    buildsystem: simple
+    build-commands:
+      - install -D ATLauncher.jar /app/bin/ATLauncher.jar
+    sources:
+      - type: file
+        dest-filename: ATLauncher.jar
+        url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.14.0/ATLauncher-3.4.14.0.jar
+        tag: v3.4.13.5
+        sha256: 17283d95e756521e171a1ab3100c725d81b5861db58957d2d12cf2701af781f3
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/ATLauncher/ATLauncher/releases/latest
+          version-query: .name | sub("^v"; "")
+          url-query: .assets[] | select(.name=="ATLauncher-" + $version + ".jar")
+            | .browser_download_url
 
-    - name: atlauncher.sh
-      buildsystem: simple
-      build-commands:
-          - install -D atlauncher.sh /app/bin/atlauncher.sh
-      sources:
-          - type: file
-            path: atlauncher.sh
 
-    - name: atlauncher-extra
-      buildsystem: simple
-      build-commands:
-          - install -D com.atlauncher.ATLauncher.desktop /app/share/applications/com.atlauncher.ATLauncher.desktop
-          - install -D com.atlauncher.ATLauncher.metainfo.xml /app/share/metainfo/com.atlauncher.ATLauncher.appdata.xml
-          - install -D icon.svg /app/share/icons/hicolor/scalable/apps/com.atlauncher.ATLauncher.svg
-      sources:
-          - type: file
-            path: com.atlauncher.ATLauncher.metainfo.xml
-          - type: file
-            path: com.atlauncher.ATLauncher.desktop
-          - type: file
-            path: images/icon.svg
+  - name: atlauncher.sh
+    buildsystem: simple
+    build-commands:
+      - install -D atlauncher.sh /app/bin/atlauncher.sh
+    sources:
+      - type: file
+        path: atlauncher.sh
+
+  - name: atlauncher-extra
+    buildsystem: simple
+    build-commands:
+      - install -D com.atlauncher.ATLauncher.desktop /app/share/applications/com.atlauncher.ATLauncher.desktop
+      - install -D com.atlauncher.ATLauncher.metainfo.xml /app/share/metainfo/com.atlauncher.ATLauncher.appdata.xml
+      - install -D icon.svg /app/share/icons/hicolor/scalable/apps/com.atlauncher.ATLauncher.svg
+    sources:
+      - type: file
+        path: com.atlauncher.ATLauncher.metainfo.xml
+      - type: file
+        path: com.atlauncher.ATLauncher.desktop
+      - type: file
+        path: images/icon.svg
