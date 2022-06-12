@@ -6,7 +6,7 @@ runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk8
+  - org.freedesktop.Sdk.Extension.openjdk17
 
 command: atlauncher.sh
 
