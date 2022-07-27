@@ -14,4 +14,4 @@ ln -sfn ~/.var/app/com.atlauncher.ATLauncher/config ~/.var/app/com.atlauncher.AT
 DIR=${CUSTOM_DIR:-".var/app/com.atlauncher.ATLauncher/data/"}
 
 # Run
-java -jar /app/bin/ATLauncher.jar --working-dir=$DIR --no-launcher-update
+java -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -jar /app/bin/ATLauncher.jar --working-dir=$DIR --no-launcher-update
