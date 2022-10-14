@@ -67,8 +67,19 @@
         <screenshot>
             <image type="source" width="1186" height="693">https://atlauncher.com/assets/images/features/settings.png</image>
         </screenshot>
-    </screenshots>
-    
+	</screenshots>
+	<recommends>
+		<memory>4096</memory>
+		<internet>always</internet>
+	</recommends>
+	<requires>
+		<control>pointing</control>
+		<control>keyboard</control>
+		<internet>first-run</internet>
+	</requires>
+	<supports>
+		<control>gamepad</control>
+	</supports>
   <releases>
         <release version="3.4.20.2" date="2022-10-14"/>
         <release version="3.4.20.1" date="2022-08-09"/>
