@@ -15,6 +15,7 @@ build-options:
 
 finish-args:
   - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
+  - --env=_JAVA_AWT_WM_NONREPARENTING=1
   - --socket=x11
   - --share=ipc
   - --device=all
