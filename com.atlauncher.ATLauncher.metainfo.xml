@@ -81,6 +81,7 @@
 		<control>gamepad</control>
 	</supports>
   <releases>
+        <release version="3.4.22.0" date="2022-11-21"/>
         <release version="3.4.21.0" date="2022-11-19"/>
         <release version="3.4.20.4" date="2022-11-02"/>
         <release version="3.4.20.2" date="2022-10-14"/>
