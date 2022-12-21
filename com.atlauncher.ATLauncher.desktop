@@ -9,3 +9,4 @@ Name=ATLauncher
 Comment=A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly.
 StartupNotify=true
 Type=Application
+X-Flatpak=com.atlauncher.ATLauncher
