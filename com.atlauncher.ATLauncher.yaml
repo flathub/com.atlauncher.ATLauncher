@@ -14,9 +14,11 @@ build-options:
   prepend-path: /app/jre/bin
 
 finish-args:
-  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
+  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin:/app/utils/gamescope/bin
   - --env=_JAVA_AWT_WM_NONREPARENTING=1
   - --socket=x11
+  - --socket=wayland # Gamescope
+  - --socket=fallback-x11 # Gamescope on X11
   - --share=ipc
   - --device=all
   - --socket=pulseaudio
@@ -24,7 +26,18 @@ finish-args:
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
   - --filesystem=xdg-download # Added due to Curseforge mod download workaround
 
+add-extensions:
+  com.valvesoftware.Steam.Utility.gamescope:
+    add-ld-path: lib
+    directory: utils/gamescope
+    version: stable
+
 modules:
+  - name: gamescope
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/utils/gamescope
+
     # Needed by Minecraft 1.8.2 and up
   - name: xrandr
     sources:
