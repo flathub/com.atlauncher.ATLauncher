@@ -2,7 +2,7 @@
 
 app-id: com.atlauncher.ATLauncher
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 
 sdk-extensions:
@@ -14,9 +14,10 @@ build-options:
   prepend-path: /app/jre/bin
 
 finish-args:
-  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin
+  - --env=PATH=/app/jre/bin:/usr/bin:/app/bin:/app/utils/gamescope/bin
   - --env=_JAVA_AWT_WM_NONREPARENTING=1
-  - --socket=x11
+  - --socket=wayland # Gamescope
+  - --socket=fallback-x11 # Gamescope on X11
   - --share=ipc
   - --device=all
   - --socket=pulseaudio
@@ -24,7 +25,18 @@ finish-args:
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
   - --filesystem=xdg-download # Added due to Curseforge mod download workaround
 
+add-extensions:
+  com.valvesoftware.Steam.Utility.gamescope:
+    add-ld-path: lib
+    directory: utils/gamescope
+    version: stable
+
 modules:
+  - name: gamescope
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/utils/gamescope
+
     # Needed by Minecraft 1.8.2 and up
   - name: xrandr
     sources:
@@ -43,15 +55,15 @@ modules:
   - name: gamemode
     buildsystem: meson
     config-opts:
-      - -Dwith-systemd=false
-      - -Dwith-daemon=false
+#      - -Dwith-systemd=false
+#      - -Dwith-daemon=false
       - -Dwith-examples=false
       - -Dwith-util=false
       - -Dwith-sd-bus-provider=no-daemon
     sources: &gamemode_sources
       - type: archive
-        url: https://github.com/FeralInteractive/gamemode/releases/download/1.6.1/gamemode-1.6.1.tar.xz
-        sha256: 10c2a3f142eae472f5a09e42616e38c666c05b25ca3e61e562a543bb3fda66c5
+        url: https://github.com/FeralInteractive/gamemode/releases/download/1.7/gamemode-1.7.tar.xz
+        sha256: c1860f76f1d4c0d6e3965e52de21c824f24791049946da728da50f0c63748389
 
   - name: gamemoderun
     buildsystem: simple
