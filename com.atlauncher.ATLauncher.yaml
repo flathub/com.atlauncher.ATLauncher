@@ -22,7 +22,7 @@ finish-args:
   - --socket=pulseaudio
   - --share=network
   - --filesystem=xdg-run/app/com.discordapp.Discord:create
-  - --filesystem=xdg-download # Added due to Curseforge mod download workaround
+  - --filesystem=xdg-download:ro # Added due to Curseforge mod download workaround
 
 modules:
     # Needed by Minecraft 1.8.2 and up
