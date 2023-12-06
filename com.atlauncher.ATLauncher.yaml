@@ -61,8 +61,8 @@ modules:
       - -Dwith-util=false
     sources: &gamemode_sources
       - type: archive
-        url: https://github.com/FeralInteractive/gamemode/releases/download/1.7/gamemode-1.7.tar.xz
-        sha256: c1860f76f1d4c0d6e3965e52de21c824f24791049946da728da50f0c63748389
+        url: https://github.com/FeralInteractive/gamemode/releases/download/1.8/gamemode-1.8.tar.xz
+        sha256: 7182149315544da69371c3cee2525f29d46a877446b6d78d807f839a9b45f75e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FeralInteractive/gamemode/releases/latest
