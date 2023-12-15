@@ -69,8 +69,6 @@ modules:
           version-query: .tag_name
           url-query: .assets[] | select(.name=="gamemode-" + $version + ".tar.xz")
             | .browser_download_url
-      - type: patch
-        path: gamemode-pidfd-open.patch
 
   - name: gamemoderun
     buildsystem: simple
