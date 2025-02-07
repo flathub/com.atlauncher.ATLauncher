@@ -1,7 +1,7 @@
 # Credits to github/nickavem for the file, Doomsdayrs for edits
 
 [Desktop Entry]
-Categories=Game;
+Categories=Game;PackageManager;
 Exec=atlauncher.sh
 Icon=com.atlauncher.ATLauncher
 Keywords=game;Minecraft;
