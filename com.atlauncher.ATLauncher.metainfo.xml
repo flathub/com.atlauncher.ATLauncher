@@ -81,8 +81,11 @@
 		<control>gamepad</control>
 	</supports>
   <releases>
-        <release version="3.4.39.1" date="2025-05-17">
+        <release version="3.4.39.2" date="2025-05-18">
             <description></description>
+        </release>
+        <release version="3.4.39.1" date="2025-05-17">
+            <description/>
         </release>
         <release version="3.4.39.0" date="2025-05-17">
             <description/>
