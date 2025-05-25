@@ -5,7 +5,7 @@
     <id>com.atlauncher.ATLauncher</id>
     <metadata_license>MIT</metadata_license>
     <name>ATLauncher</name>
-    <summary>A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly.</summary>
+    <summary>A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly</summary>
     <description>
         <p>ATLauncher is a launcher for Minecraft which integrates multiple different modpacks to allow you to download and install modpacks easily and quickly.</p>
         <p>ATLauncher has a few nice features including:</p>
