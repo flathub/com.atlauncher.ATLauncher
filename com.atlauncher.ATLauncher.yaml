@@ -6,7 +6,7 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk17
+  - org.freedesktop.Sdk.Extension.openjdk21
 
 command: atlauncher.sh
 
@@ -51,7 +51,7 @@ modules:
   - name: openjdk
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/openjdk17/install.sh
+      - /usr/lib/sdk/openjdk21/install.sh
 
   - name: gamemode
     buildsystem: meson
