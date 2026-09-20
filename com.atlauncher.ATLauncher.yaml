@@ -78,9 +78,9 @@ modules:
     sources:
       - type: file
         dest-filename: ATLauncher.jar
-        url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.37.4/ATLauncher-3.4.37.4.jar
+        url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.41.3/ATLauncher-3.4.41.3.jar
         tag: v3.4.13.5
-        sha256: df17d710a8c2bb7b35192032f959a7e636498c471ee5e1b1501a48fba7dbffa4
+        sha256: ee10e457e04c2dff95e78a3445de31b623259c24a277f50acfbf7ca0636ebaec
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ATLauncher/ATLauncher/releases/latest
