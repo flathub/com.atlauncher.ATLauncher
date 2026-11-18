@@ -81,8 +81,12 @@
 		<control>gamepad</control>
 	</supports>
   <releases>
-        <release version="3.4.41.3" date="2026-09-19">
+        <release version="3.4.42.0" date="2026-11-18">
+            <url type="details">https://github.com/ATLauncher/ATLauncher/releases/tag/v3.4.42.0</url>
             <description></description>
+        </release>
+        <release version="3.4.41.3" date="2026-09-19">
+            <description/>
         </release>
         <release version="3.4.41.2" date="2026-08-19">
             <description/>
