@@ -85,8 +85,8 @@ modules:
     sources:
       - type: file
         dest-filename: ATLauncher.jar
-        url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.42.0/ATLauncher-3.4.42.0.jar
-        sha256: d88516436120711ceef6cfb835e2ad9a0004caee4892a99d9b7d4ce29514121e
+        url: https://github.com/ATLauncher/ATLauncher/releases/download/v3.4.43.0/ATLauncher-3.4.43.0.jar
+        sha256: 19b9d8daa23675b2b058f777b8ee68a41478d279a7e2cbcc015880eca2949fe0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ATLauncher/ATLauncher/releases/latest
